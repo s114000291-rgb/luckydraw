@@ -21,7 +21,7 @@ const LuckyDraw: React.FC<LuckyDrawProps> = ({ employees }) => {
 
   const startSpin = () => {
     if (pool.length === 0) return;
-    
+
     setIsSpinning(true);
     let counter = 0;
     const duration = 2000 + Math.random() * 1000;
@@ -42,7 +42,7 @@ const LuckyDraw: React.FC<LuckyDrawProps> = ({ employees }) => {
     if (spinInterval.current) {
       clearInterval(spinInterval.current);
     }
-    
+
     setIsSpinning(false);
     setWinners(prev => [winner, ...prev]);
 
@@ -64,17 +64,17 @@ const LuckyDraw: React.FC<LuckyDrawProps> = ({ employees }) => {
           <div className="bg-indigo-50 p-4 rounded-2xl mb-6">
             <Trophy className="w-12 h-12 text-indigo-600" />
           </div>
-          
-          <h2 className="text-3xl font-bold text-gray-800 mb-2">Lucky Draw</h2>
+
+          <h2 className="text-3xl font-bold text-gray-800 mb-2">幸運抽獎</h2>
           <p className="text-gray-500 mb-8">
-            Pool size: <span className="font-semibold text-indigo-600">{pool.length}</span> participants
+            名單人數: <span className="font-semibold text-indigo-600">{pool.length}</span> 位參與者
           </p>
 
           <div className="w-full max-w-md bg-gradient-to-br from-indigo-600 to-purple-700 rounded-3xl p-10 shadow-2xl relative overflow-hidden mb-8">
             <div className="absolute top-0 left-0 w-full h-1 bg-white/20 animate-pulse"></div>
             <div className="h-24 flex items-center justify-center">
               <span className={`text-4xl font-extrabold text-white transition-all ${isSpinning ? 'scale-110 blur-[1px]' : 'scale-100'}`}>
-                {currentName || 'Ready?'}
+                {currentName || '準備好了嗎？'}
               </span>
             </div>
             <div className="absolute bottom-0 left-0 w-full h-1 bg-white/20 animate-pulse"></div>
@@ -85,7 +85,7 @@ const LuckyDraw: React.FC<LuckyDrawProps> = ({ employees }) => {
             disabled={isSpinning || pool.length === 0}
             className="px-12 py-4 bg-indigo-600 hover:bg-indigo-700 text-white text-xl font-bold rounded-2xl transition-all shadow-xl hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed transform active:scale-95"
           >
-            {isSpinning ? 'SPINNING...' : 'SPIN THE WHEEL!'}
+            {isSpinning ? '抽獎中...' : '開始抽獎！'}
           </button>
         </div>
 
@@ -93,26 +93,26 @@ const LuckyDraw: React.FC<LuckyDrawProps> = ({ employees }) => {
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
               <Settings2 size={20} className="text-gray-400" />
-              Draw Settings
+              抽獎設定
             </h3>
-            <button 
+            <button
               onClick={reset}
               className="text-gray-500 hover:text-indigo-600 flex items-center gap-1 text-sm font-medium transition-colors"
             >
-              <RotateCcw size={16} /> Reset Draw
+              <RotateCcw size={16} /> 重置抽獎
             </button>
           </div>
-          
+
           <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-xl">
-            <input 
-              type="checkbox" 
-              id="duplicates" 
+            <input
+              type="checkbox"
+              id="duplicates"
               checked={allowDuplicates}
               onChange={(e) => setAllowDuplicates(e.target.checked)}
               className="w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500"
             />
             <label htmlFor="duplicates" className="text-gray-700 font-medium cursor-pointer">
-              Allow repetitive wins (Don't remove winner from pool)
+              允許重複獲獎 (不從名單移除)
             </label>
           </div>
         </div>
@@ -121,19 +121,19 @@ const LuckyDraw: React.FC<LuckyDrawProps> = ({ employees }) => {
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col h-[700px]">
         <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
           <Gift size={20} className="text-pink-500" />
-          Winners History ({winners.length})
+          獲獎紀錄 ({winners.length})
         </h3>
-        
+
         <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar">
           {winners.length === 0 ? (
             <div className="h-full flex flex-col items-center justify-center text-gray-400 text-center p-6 space-y-3">
               <Trophy size={48} className="opacity-10" />
-              <p>The winners will appear here once you spin the wheel!</p>
+              <p>開始抽獎後，獲獎者會顯示在這裡！</p>
             </div>
           ) : (
             <div className="space-y-3">
               {winners.map((winner, idx) => (
-                <div 
+                <div
                   key={`${winner.id}-${idx}`}
                   className="flex items-center justify-between p-4 bg-yellow-50 border border-yellow-100 rounded-xl animate-in slide-in-from-right duration-300"
                 >

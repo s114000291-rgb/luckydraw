@@ -8,9 +8,9 @@ interface NameManagerProps {
 }
 
 const SAMPLE_DATA = [
-  "Alice Thompson", "Bob Richards", "Charlie Davis", "Diana Prince", 
-  "Edward Norton", "Fiona Gallagher", "George Miller", "Hannah Abbott",
-  "Ian Wright", "Julia Roberts", "Kevin Heart", "Laura Croft"
+  "陳小明", "林美華", "張志強", "李淑芬",
+  "王大軍", "吳雅婷", "劉冠宇", "蔡欣怡",
+  "楊宗翰", "許家豪", "黃怡君", "謝佳穎"
 ];
 
 const NameManager: React.FC<NameManagerProps> = ({ onUpdateNames, hasData }) => {
@@ -55,13 +55,13 @@ const NameManager: React.FC<NameManagerProps> = ({ onUpdateNames, hasData }) => 
             <div className="bg-indigo-50 p-2 rounded-lg">
               <ClipboardList size={22} />
             </div>
-            <h2 className="text-xl font-bold text-gray-800">Add Participants</h2>
+            <h2 className="text-xl font-bold text-gray-800">新增參與者</h2>
           </div>
-          <button 
+          <button
             onClick={loadSample}
             className="text-xs font-bold px-4 py-2 bg-indigo-50 text-indigo-700 rounded-xl hover:bg-indigo-100 transition-all flex items-center gap-2 border border-indigo-100 shadow-sm active:scale-95"
           >
-            <Sparkles size={14} className="text-indigo-500" /> Use Mock List
+            <Sparkles size={14} className="text-indigo-500" /> 使用範例名單
           </button>
         </div>
 
@@ -69,16 +69,16 @@ const NameManager: React.FC<NameManagerProps> = ({ onUpdateNames, hasData }) => 
           <div className="mb-6 p-4 bg-indigo-600 rounded-2xl text-white shadow-lg shadow-indigo-100 relative overflow-hidden group">
             <div className="absolute -right-4 -top-4 bg-white/10 w-24 h-24 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
             <h3 className="font-bold flex items-center gap-2 mb-1">
-              <UserPlus size={18} /> First time here?
+              <UserPlus size={18} /> 第一次來嗎？
             </h3>
             <p className="text-sm text-indigo-50 mb-3 opacity-90">
-              Click the button below to fill the pool with sample names and see how grouping works!
+              點擊下方按鈕來填入範例名單，看看分組功能如何運作！
             </p>
-            <button 
+            <button
               onClick={loadSample}
               className="w-full py-2 bg-white text-indigo-600 font-black rounded-xl text-sm shadow-md hover:shadow-lg transition-all active:scale-95"
             >
-              Fill with Mock Participants
+              填入範例參與者
             </button>
           </div>
         )}
@@ -86,11 +86,11 @@ const NameManager: React.FC<NameManagerProps> = ({ onUpdateNames, hasData }) => 
         <div className="space-y-5">
           <div>
             <label className="block text-sm font-bold text-gray-700 mb-2.5 ml-1">
-              Paste names manually
+              手動貼上名單
             </label>
             <textarea
               className="w-full h-36 p-4 bg-gray-50 border-2 border-gray-100 rounded-2xl focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 transition-all outline-none text-gray-700 text-sm font-medium resize-none shadow-inner"
-              placeholder="Enter names separated by lines or commas..."
+              placeholder="輸入名字，用換行或逗號分隔..."
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
             />
@@ -101,7 +101,7 @@ const NameManager: React.FC<NameManagerProps> = ({ onUpdateNames, hasData }) => 
             disabled={!inputText.trim()}
             className="w-full py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-2xl transition-all shadow-lg shadow-indigo-200 disabled:opacity-30 disabled:shadow-none active:scale-[0.98]"
           >
-            Add to Current Pool
+            加入目前名單
           </button>
 
           <div className="relative py-2">
@@ -109,7 +109,7 @@ const NameManager: React.FC<NameManagerProps> = ({ onUpdateNames, hasData }) => 
               <span className="w-full border-t border-gray-100"></span>
             </div>
             <div className="relative flex justify-center text-[10px] uppercase tracking-widest font-black">
-              <span className="bg-white px-4 text-gray-400">or upload source</span>
+              <span className="bg-white px-4 text-gray-400">或上傳檔案</span>
             </div>
           </div>
 
@@ -121,9 +121,9 @@ const NameManager: React.FC<NameManagerProps> = ({ onUpdateNames, hasData }) => 
                     <Upload className="w-6 h-6 text-gray-400 group-hover:text-indigo-500" />
                   </div>
                   <p className="mb-1 text-sm text-gray-600 font-semibold">
-                    Upload CSV or Text File
+                    上傳 CSV 或文字檔
                   </p>
-                  <p className="text-xs text-gray-400">Drag & drop your list here</p>
+                  <p className="text-xs text-gray-400">拖放檔案到這裡</p>
                 </div>
                 <input type="file" className="hidden" accept=".csv,.txt" onChange={handleFileUpload} />
               </label>
@@ -136,7 +136,7 @@ const NameManager: React.FC<NameManagerProps> = ({ onUpdateNames, hasData }) => 
             <Info size={18} />
           </div>
           <p className="leading-relaxed">
-            <strong>Pro Tip:</strong> Duplicate detection is active. If you upload the same file twice, we'll mark the repeats so you can clean them up with one click.
+            <strong>小撇步：</strong>重複偵測已啟用。如果您上傳了重複的檔案，我們會標記重複項目，讓您一鍵清理。
           </p>
         </div>
       </div>
